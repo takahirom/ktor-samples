@@ -1,5 +1,6 @@
 package io.ktor.samples.mpp.client
 
+import com.github.takahirom.sample.proto.MyProtoSample
 import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.http.*
@@ -10,16 +11,19 @@ internal expect val ApplicationDispatcher: CoroutineDispatcher
 class ApplicationApi {
     private val client = HttpClient()
 
-    var address = Url("https://tools.ietf.org/rfc/rfc1866.txt")
+    var address = Url("http://localhost:8080/")
 
-    fun about(callback: (String) -> Unit) {
+    fun about(callback: (MyProtoSample) -> Unit) {
         GlobalScope.apply {
             launch(ApplicationDispatcher) {
-                val result: String = client.get {
+                val result: ByteArray = client.get {
                     url(this@ApplicationApi.address.toString())
                 }
+                val proto: MyProtoSample = MyProtoSample
+                    .ADAPTER
+                    .decode(result)
 
-                callback(result)
+                callback(proto)
             }
         }
     }

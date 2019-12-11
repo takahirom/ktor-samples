@@ -12,6 +12,7 @@
 		2C9BE46921183DE400670E90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C9BE46721183DE400670E90 /* Main.storyboard */; };
 		2C9BE46B21183DE600670E90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C9BE46A21183DE600670E90 /* Assets.xcassets */; };
 		2C9BE46E21183DE600670E90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C9BE46C21183DE600670E90 /* LaunchScreen.storyboard */; };
+		8366CAC623A1191A009B18F4 /* client_mpp.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A787738217ED9D300905BF7 /* client_mpp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,10 +26,20 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8366CAC423A114F4009B18F4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8366CAC623A1191A009B18F4 /* client_mpp.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0A787738217ED9D300905BF7 /* client_mpp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = client_mpp.framework; path = build/bin/iosX64/main/debug/framework/client_mpp.framework; sourceTree = "<group>"; };
+		0A787738217ED9D300905BF7 /* client_mpp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = client_mpp.framework; path = build/bin/iosX64/debugFramework/client_mpp.framework; sourceTree = "<group>"; };
 		2C9BE46021183DE400670E90 /* client-mpp-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "client-mpp-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C9BE46321183DE400670E90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C9BE46521183DE400670E90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +66,7 @@
 				0A787738217ED9D300905BF7 /* client_mpp.framework */,
 				2C9BE46221183DE400670E90 /* client-mpp-ios */,
 				2C9BE46121183DE400670E90 /* Products */,
+				8366CAC223A11467009B18F4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +91,13 @@
 			path = "client-mpp-ios";
 			sourceTree = "<group>";
 		};
+		8366CAC223A11467009B18F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -88,6 +107,7 @@
 			buildPhases = (
 				2C9BE45C21183DE400670E90 /* Sources */,
 				2C9BE45D21183DE400670E90 /* Frameworks */,
+				8366CAC423A114F4009B18F4 /* CopyFiles */,
 				2C9BE45E21183DE400670E90 /* Resources */,
 				2C946B0421184178003A898D /* Embed Frameworks */,
 			);
@@ -301,11 +321,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/bin/iosX64/main/debug/framework",
 					"$(PROJECT_DIR)/build/bin/iosArm64/main/debug/framework",
+					"$(PROJECT_DIR)/build/bin/iosX64/debugFramework",
 				);
 				INFOPLIST_FILE = "client-mpp-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/../Frameworks/",
 					"$(PROJECT_DIR)/build/bin/iosX64/main/debug/framework",
 					"$(PROJECT_DIR)/build/bin/iosArm64/main/debug/framework",
 				);
@@ -325,11 +347,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/bin/iosX64/main/debug/framework",
 					"$(PROJECT_DIR)/build/bin/iosArm64/main/debug/framework",
+					"$(PROJECT_DIR)/build/bin/iosX64/debugFramework",
 				);
 				INFOPLIST_FILE = "client-mpp-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/../Frameworks/",
 					"$(PROJECT_DIR)/build/bin/iosX64/main/debug/framework",
 					"$(PROJECT_DIR)/build/bin/iosArm64/main/debug/framework",
 				);
@@ -350,7 +374,7 @@
 				2C9BE47121183DE600670E90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		2C9BE47221183DE600670E90 /* Build configuration list for PBXNativeTarget "client-mpp-ios" */ = {
 			isa = XCConfigurationList;
@@ -359,7 +383,7 @@
 				2C9BE47421183DE600670E90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

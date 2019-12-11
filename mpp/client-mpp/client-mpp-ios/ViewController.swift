@@ -11,8 +11,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         api.about { (description) in
-            self.aboutText.text = description
-            return KotlinUnit()
+            self.aboutText.text = description.name
         }
     }
 

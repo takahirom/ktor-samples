@@ -8,7 +8,7 @@ fun main() {
         this.address = Url("https://ktor.io/pages.txt") // The default URL doesn't support CORS
     }.about {
         val div = document.createElement("pre")
-        div.textContent = it
+        div.textContent = it.toString()
         document.body?.appendChild(div)
     }
 }

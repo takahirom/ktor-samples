@@ -1,8 +1,14 @@
 package io.ktor.samples.fullstack.backend
 
+import com.github.takahirom.sample.proto.MyProtoSample
 import io.ktor.application.*
 import io.ktor.html.*
+import io.ktor.http.ContentType
 import io.ktor.http.content.*
+import io.ktor.http.headersOf
+import io.ktor.http.parseAndSortContentTypeHeader
+import io.ktor.response.defaultTextContentType
+import io.ktor.response.respondBytes
 import io.ktor.routing.*
 import io.ktor.samples.fullstack.common.*
 import io.ktor.server.engine.*
@@ -16,16 +22,10 @@ fun Application.main() {
 
     routing {
         get("/") {
-            call.respondHtml {
-                body {
-                    +"Hello ${getCommonWorldString()} from Ktor"
-                    div {
-                        id = "js-response"
-                        +"Loading..."
-                    }
-                    script(src = "/static/ktor-samples-fullstack-mpp-frontend.js") {
-                    }
-                }
+            call.respondBytes(contentType = ContentType.parse("application/protobuf")) {
+                MyProtoSample
+                    .ADAPTER
+                    .encode(MyProtoSample(10L, "native", listOf("a", "b")))
             }
         }
         static("/static") {
